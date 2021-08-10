@@ -10,7 +10,7 @@ function Test-PasswordComplexity {
     Defines the string phrase to test.
 
     .EXAMPLE
-    PS C:\> Test-PasswordComplexity -Phrase 'PassW0rd'
+    Test-PasswordComplexity -Phrase 'PassW0rd'
 
     MeetComplexityRequirements : True
     Length                     : 8

@@ -1,28 +1,31 @@
 ---
 external help file:
 Module Name:
-online version: https://github.com/philmph/PWSH_Common_Functions
+online version: https://github.com/philmph/PWSH_Common_Functions/blob/main/Docs/Test-PasswordComplexity.md
 schema: 2.0.0
 ---
 
 # Test-PasswordComplexity
 
 ## SYNOPSIS
+
 Tests a string phrase for password complexity.
 
 ## SYNTAX
 
-```
+```powershell
 Test-PasswordComplexity [-Phrase] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 Test a string phrase for password complexity by evaluating different requirements.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
+```powershell
 Test-PasswordComplexity -Phrase 'PassW0rd'
 
 MeetComplexityRequirements : True
@@ -36,6 +39,7 @@ SpecialCharacters          : False
 ## PARAMETERS
 
 ### -Phrase
+
 Defines the string phrase to test.
 
 ```yaml
@@ -51,19 +55,23 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### [System.String]
+
 ## OUTPUTS
 
 ### [PSCustomObject]
+
 ## NOTES
-Author:			Philipp Maier\
-Author Git:		https://github.com/philmph
+
+Author: Philipp Maier
+
+Author Git: [philmph](https://github.com/philmph)
 
 ## RELATED LINKS
 
-[https://github.com/philmph/PWSH_Common_Functions](https://github.com/philmph/PWSH_Common_Functions)
-
+[https://github.com/philmph/PWSH_Common_Functions/blob/main/Docs/Test-PasswordComplexity.md](https://github.com/philmph/PWSH_Common_Functions/blob/main/Docs/Test-PasswordComplexity.md)
