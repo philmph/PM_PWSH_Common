@@ -13,7 +13,7 @@ function ConvertTo-InvertedCsv {
     Defines the delimiter to use for Import and Export-Csv cmdlets. Defaults to ','.
 
     .EXAMPLE
-    PS C:\> Import-Csv -Path $File -Encoding UTF8
+    Import-Csv -Path $File -Encoding UTF8
     Column1 Column2 Column3
     ------- ------- -------
     1       2       3
@@ -21,15 +21,14 @@ function ConvertTo-InvertedCsv {
     x       y       z
     4       5       6
 
-
-    PS C:\> ConvertTo-InvertedCsv -SourceCsv $File -Verbose                                                                                                                                                                                                                        VERBOSE: Old header: Column1,Column2,Column3
+    ConvertTo-InvertedCsv -SourceCsv $File -Verbose
+    VERBOSE: Old header: Column1,Column2,Column3
     VERBOSE: New header: Column1,1,a,x,4
     VERBOSE: Starting convertion for header Column2
     VERBOSE: Starting convertion for header Column3
     VERBOSE: Outputting to file D:\test_Inverted.csv
 
-
-    PS C:\> Import-Csv -Path $File2 -Encoding UTF8 | FT
+    Import-Csv -Path $File2 -Encoding UTF8 | FT
     Column1 1 a x 4
     ------- - - - -
     Column2 2 b y 5
