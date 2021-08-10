@@ -2,18 +2,18 @@ function ConvertTo-InvertedCsv {
     <#
     .SYNOPSIS
     Converts a .csv file from header:cloumn to cloumn:header.
-    
+
     .DESCRIPTION
     Converts a .csv file from header:cloumn to cloumn:header.
-    
+
     .PARAMETER SourceCsv
     Path to the original .csv file.
-    
+
     .PARAMETER Delimiter
     Defines the delimiter to use for Import and Export-Csv cmdlets. Defaults to ','.
-    
+
     .EXAMPLE
-    PS C:\> Import-Csv -Path $File -Encoding UTF8                                                                                                                                                                                                                                  
+    PS C:\> Import-Csv -Path $File -Encoding UTF8
     Column1 Column2 Column3
     ------- ------- -------
     1       2       3
@@ -27,51 +27,52 @@ function ConvertTo-InvertedCsv {
     VERBOSE: Starting convertion for header Column2
     VERBOSE: Starting convertion for header Column3
     VERBOSE: Outputting to file D:\test_Inverted.csv
- 
 
-    PS C:\> Import-Csv -Path $File2 -Encoding UTF8 | FT                                                                                                                                                                                            
+
+    PS C:\> Import-Csv -Path $File2 -Encoding UTF8 | FT
     Column1 1 a x 4
     ------- - - - -
     Column2 2 b y 5
     Column3 3 c z 6
-    
+
     .INPUTS
     -
-    
+
     .OUTPUTS
     -
-    
+
     .NOTES
-    Author:			Philipp Maier
-    Author Git:		https://github.com/philmph
-    
+    Author: Philipp Maier
+    Author Git: https://github.com/philmph
+
     .LINK
-    https://github.com/philmph/PWSH_Common_Functions
+    https://github.com/philmph/PWSH_Common_Functions/blob/main/Docs/ConvertTo-InvertedCsv.md
     #>
-    
+
     [CmdletBinding()]
-    
+
     param (
-        [Parameter(Mandatory=$true,
-                   Position=0)]
-        [ValidateScript({
-            if (Test-Path -Path $_ -PathType Leaf) {
-                $true
-            } else {
-                $false
-            }
-        })]
+        [Parameter(
+            Mandatory,
+            Position = 0
+        )]
+        [ValidateScript( {
+                if (Test-Path -Path $_ -PathType Leaf) {
+                    $true
+                } else {
+                    $false
+                }
+            })]
         [string]$SourceCsv,
 
-        [Parameter(Mandatory=$false,
-                   Position=1)]
+        [Parameter(Position = 1)]
         [char]$Delimiter = ','
     )
-    
+
     begin {
         Set-StrictMode -Version 2
     } # begin
-    
+
     process {
         $SourceCsvData = Import-Csv -Path $SourceCsv -Delimiter $Delimiter -Encoding UTF8
 
@@ -86,7 +87,7 @@ function ConvertTo-InvertedCsv {
 
         $n = 1
         $DestinationCsvData = [System.Collections.ArrayList]::new()
-       
+
         foreach ($OldHeaderProp in ($OldHeader | Select-Object -Skip 1)) {
             $obj = [PSCustomObject] @{
                 $NewHeader[0] = $OldHeader[$n]
@@ -104,10 +105,10 @@ function ConvertTo-InvertedCsv {
             $n++
             $DestinationCsvData.Add($obj) | Out-Null
         } # foreach
- 
+
         Write-Verbose -Message ('Outputting to file {0}' -f $SourceCsv.Replace('.csv', '_inverted.csv'))
         $DestinationCsvData | Export-Csv -Path $SourceCsv.Replace('.csv', '_inverted.csv') -Delimiter $Delimiter -Encoding UTF8 -NoTypeInformation
     } # process
-    
+
     end {}
 } # function
