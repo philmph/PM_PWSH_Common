@@ -1,53 +1,55 @@
-Function Convert-UmlautToHTML
-{
+Function Convert-UmlautToHTML {
     <#
     .SYNOPSIS
     Converts string text input with umlauts to HTML compatible.
-    
+
     .DESCRIPTION
     Converts string text input with umlauts to HTML compatible by replacing umlaut characters.
-    
+
     .PARAMETER InputObject
     String input to convert. This parameter accepts arrays with strings.
-    
+
     .EXAMPLE
     PS C:\> Convert-UmlautToHTML -InputObject 'Example text 1: ßüÜöÖäÄ', 'Example text 2: äÄöÖßüÜ'
     Example text 1: &szlig;&uuml;&Uuml;&ouml;&Ouml;&auml;&Auml;
     Example text 2: &auml;&Auml;&ouml;&Ouml;&szlig;&uuml;&Uuml;
-    
+
     .EXAMPLE
     PS C:\> 'Example text: ßüÜöÖäÄ' | Convert-UmlautToHTML
     Example text: &szlig;&uuml;&Uuml;&ouml;&Ouml;&auml;&Auml;
 
     .INPUTS
     [System.String[]]
-    
+
     .OUTPUTS
     [System.String]
 
     .NOTES
-    Author:			Philipp Maier
-    Author Git:		https://github.com/philmph
+    Author: Philipp Maier
+    Author Git: https://github.com/philmph
 
     .LINK
-    https://github.com/philmph/PWSH_Common_Functions
+    https://github.com/philmph/PWSH_Common_Functions/blob/main/Docs/Convert-UmlautToHTML.md
     #>
 
     [CmdletBinding()]
-    
+
     Param (
-        [Parameter(Mandatory=$true,
-                   Position=0,
-                   ValueFromPipeline=$true)]
+        [Parameter(
+            Mandatory,
+            Position = 0,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName
+        )]
         [Alias('Text')]
         [ValidateNotNullOrEmpty()]
         [string[]]$InputObject
     )
-    
+
     begin {
         Set-StrictMode -Version 3
     }
-    
+
     process {
         foreach ($Text in $InputObject) {
             switch -regex ($Text) {
@@ -68,6 +70,6 @@ Function Convert-UmlautToHTML
             Write-Output $Text
         }
     }
-    
+
     end {}
 }
