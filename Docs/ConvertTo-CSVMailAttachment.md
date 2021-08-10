@@ -1,29 +1,33 @@
 ---
 external help file:
 Module Name:
-online version: https://github.com/philmph/PWSH_Common_Functions
+online version: https://github.com/philmph/PWSH_Common_Functions/blob/main/Docs/ConvertTo-CSVMailAttachment.md
 schema: 2.0.0
 ---
 
 # ConvertTo-CSVMailAttachment
 
 ## SYNOPSIS
+
 Transforms objects to CSV Mail Attachments.
 
 ## SYNTAX
 
-```
+```powershell
 ConvertTo-CSVMailAttachment [-InputObject] <Object[]> [-FileName] <String> [-AddDate] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 Transforms objects to CSV Mail Attachments.
 Used for sending sending CSV files In-Memory.
+Function was created with the idea of https://stackoverflow.com/questions/57035997/sending-e-mail-with-attachment-in-powershell.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
+```powershell
 ConvertTo-CSVMailAttachment -InputObject ([PSCustomObject]@{ "Test" = 123 }) -FileName Test
 
 Name               : Test
@@ -32,12 +36,13 @@ ContentDisposition : attachment
 ContentStream      : System.IO.MemoryStream
 ContentId          : fe3cf29e-29b2-444d-bf5b-67c3aa6f9a9c
 ContentType        : text/csv; name=Test
-TransferEncoding   : 
+TransferEncoding   : Base64
 ```
 
 ## PARAMETERS
 
 ### -InputObject
+
 PowerShell objects which should be converted to the CSV content.
 
 ```yaml
@@ -53,6 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileName
+
 Defines the output filename.
 
 ```yaml
@@ -68,6 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -AddDate
+
 Adds the date in front of the output filename.
 
 ```yaml
@@ -83,6 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -90,13 +98,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### [System.Net.Mail.Attachment]
+
 ## NOTES
-Author:			Philipp Maier\
-Author Git:		https://github.com/philmph
+
+Author: Philipp Maier
+Author Git: [philmph](https://github.com/philmph)
 
 ## RELATED LINKS
 
-[https://github.com/philmph/PWSH_Common_Functions](https://github.com/philmph/PWSH_Common_Functions)
-
-[https://stackoverflow.com/questions/57035997/sending-e-mail-with-attachment-in-powershell](https://stackoverflow.com/questions/57035997/sending-e-mail-with-attachment-in-powershell)
-
+[https://github.com/philmph/PWSH_Common_Functions/blob/main/Docs/ConvertTo-CSVMailAttachment.md](https://github.com/philmph/PWSH_Common_Functions/blob/main/Docs/ConvertTo-CSVMailAttachment.md)

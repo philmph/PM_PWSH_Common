@@ -19,7 +19,6 @@ function ConvertTo-CSVMailAttachment {
     .EXAMPLE
     ConvertTo-CSVMailAttachment -InputObject ([PSCustomObject]@{ "Test" = 123 }) -FileName Test
 
-
     Name               : Test
     NameEncoding       :
     ContentDisposition : attachment
