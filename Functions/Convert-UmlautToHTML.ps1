@@ -10,12 +10,12 @@ Function Convert-UmlautToHTML {
     String input to convert. This parameter accepts arrays with strings.
 
     .EXAMPLE
-    PS C:\> Convert-UmlautToHTML -InputObject 'Example text 1: ßüÜöÖäÄ', 'Example text 2: äÄöÖßüÜ'
+    Convert-UmlautToHTML -InputObject 'Example text 1: ßüÜöÖäÄ', 'Example text 2: äÄöÖßüÜ'
     Example text 1: &szlig;&uuml;&Uuml;&ouml;&Ouml;&auml;&Auml;
     Example text 2: &auml;&Auml;&ouml;&Ouml;&szlig;&uuml;&Uuml;
 
     .EXAMPLE
-    PS C:\> 'Example text: ßüÜöÖäÄ' | Convert-UmlautToHTML
+    'Example text: ßüÜöÖäÄ' | Convert-UmlautToHTML
     Example text: &szlig;&uuml;&Uuml;&ouml;&Ouml;&auml;&Auml;
 
     .INPUTS
