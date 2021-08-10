@@ -1,15 +1,14 @@
-function Test-PasswordComplexity
-{
+function Test-PasswordComplexity {
     <#
     .SYNOPSIS
     Tests a string phrase for password complexity.
-    
+
     .DESCRIPTION
     Test a string phrase for password complexity by evaluating different requirements.
-    
+
     .PARAMETER Phrase
     Defines the string phrase to test.
-    
+
     .EXAMPLE
     PS C:\> Test-PasswordComplexity -Phrase 'PassW0rd'
 
@@ -19,52 +18,69 @@ function Test-PasswordComplexity
     LowerCaseLetters           : True
     Numbers                    : True
     SpecialCharacters          : False
-        
+
     .INPUTS
     [System.String]
-    
+
     .OUTPUTS
     [PSCustomObject]
-    
+
     .NOTES
-    Author:			Philipp Maier
-    Author Git:		https://github.com/philmph
-    
+    Author: Philipp Maier
+    Author Git: https://github.com/philmph
+
     .LINK
-    https://github.com/philmph/PWSH_Common_Functions
+    https://github.com/philmph/PWSH_Common_Functions/blob/main/Docs/Test-PasswordComplexity.md
     #>
 
     [CmdletBinding()]
-    
+
     param (
-        [Parameter(Mandatory,
-                   ValueFromPipeline,
-                   ValueFromPipelineByPropertyName)]
+        [Parameter(
+            Mandatory,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName
+        )]
         [AllowEmptyString()]
         [string]$Phrase
     )
-    
+
     begin {
         Set-StrictMode -Version 3
     }
-    
+
     process {
         $ComplexityCounter = 0
 
         $Result = [PSCustomObject] @{
             MeetComplexityRequirements = $false
-            Length = $Phrase.Length
-            CapitalLetters = $false
-            LowerCaseLetters = $false
-            Numbers = $false
-            SpecialCharacters = $false
+            Length                     = $Phrase.Length
+            CapitalLetters             = $false
+            LowerCaseLetters           = $false
+            Numbers                    = $false
+            SpecialCharacters          = $false
         }
 
         switch -regex -casesensitive ($Phrase) {
-            "[A-Z]" { $ComplexityCounter++; $Result.CapitalLetters = $true }
-            "[a-z]" { $ComplexityCounter++; $Result.LowerCaseLetters = $true }
-            "[\d]" { $ComplexityCounter++; $Result.Numbers = $true }
-            "[^\w]" { $ComplexityCounter++; $Result.SpecialCharacters = $true }
+            '[A-Z]' {
+                $ComplexityCounter++
+                $Result.CapitalLetters = $true
+            }
+
+            '[a-z]' {
+                $ComplexityCounter++
+                $Result.LowerCaseLetters = $true
+            }
+
+            '[\d]' {
+                $ComplexityCounter++
+                $Result.Numbers = $true
+            }
+
+            '[^\w]' {
+                $ComplexityCounter++
+                $Result.SpecialCharacters = $true
+            }
         }
 
         if (($Phrase.Length -ge 8) -and ($ComplexityCounter -ge 3)) {
@@ -73,6 +89,6 @@ function Test-PasswordComplexity
 
         Write-Output -InputObject $Result
     }
-    
+
     end {}
 }
