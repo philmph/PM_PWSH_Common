@@ -1,4 +1,4 @@
-# NOTE: This function is not something that should be taken serious and 
+# NOTE: This function is not something that should be taken serious and
 # more of a joke. Feel free to use it to show someone that "Powershell
 # can grep" :)
 
@@ -6,15 +6,19 @@ function grep {
     [CmdletBinding()]
 
     param (
-        [Parameter(Mandatory,
-                   Position=1,
-                   ValueFromPipeline,
-                   ValueFromPipelineByPropertyName)]
+        [Parameter(
+            Mandatory,
+            Position = 1,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName
+        )]
         [psobject[]]$InputObject,
 
-        [Parameter(Mandatory,
-                   Position=0,
-                   ValueFromPipelineByPropertyName)]
+        [Parameter(
+            Mandatory,
+            Position = 0,
+            ValueFromPipelineByPropertyName
+        )]
         [string]$Filter
     )
 
