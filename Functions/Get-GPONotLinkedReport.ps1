@@ -10,7 +10,7 @@ function Get-GPONotLinkedReport {
     Defines the domain to check for unlinked gpos. Defaults to env:USERDNSDOMAIN.
 
     .EXAMPLE
-    PS C:\> Get-GPONotLinkedReport
+    Get-GPONotLinkedReport
 
     Name       CreatedTime         ModifiedTime
     ----       -----------         ------------
