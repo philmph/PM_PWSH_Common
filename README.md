@@ -1,3 +1,3 @@
 # PWSH_Common_Functions
 
-I use this repo to collect basic PowerShell things that I've written over the years.
+This repository is used to collect various different PowerShell classes and functions I've written over time.
