@@ -1,4 +1,4 @@
-# PWSH_Common_Functions
+# PowerShell Common Functions
 
 **Note**: This project is not actively maintained by me due to moving away from PowerShell development.
 
